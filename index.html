@@ -260,48 +260,45 @@
             0% { transform: translateY(0) rotateZ(0); opacity: 1; }
             100% { transform: translateY(100vh) rotateZ(720deg); opacity: 0; }
         }
-/* ################# ÖZEL MOBİL UYUMLULUK (MEDIA QUERY) ################# */
-        /* Ekran genişliği 500 piksel ve altı için özel kurallar */
-        @media (max-width: 500px) {
+/* ################# SON VE KESİN MOBİL DÜZENLEME ################# */
+        /* Ekran genişliği 400 piksel ve altı için maksimum küçültme */
+        @media (max-width: 400px) {
             
-            /* Kontainerin iç boşluğunu azalt */
+            /* Kontainerin iç ve dış boşluklarını minimuma indir */
             .container {
-                padding: 20px 10px; 
+                padding: 15px 5px; 
+            }
+            body {
+                padding: 10px;
             }
 
             /* Header elemanlarının yazı boyutunu azalt */
             .header-item {
-                font-size: 0.9em;
-                padding: 8px 3px;
-            }
-
-            /* İşlem hanesini ve sayıyı küçült */
-            .operation-container {
-                font-size: 3em; 
-                margin: 20px 0;
+                font-size: 0.8em;
+                padding: 5px 2px;
             }
 
             /* Sonuç kutucuklarını küçült */
             .result-digit { 
-                width: 60px; 
-                height: 75px; 
-                font-size: 2.5em; 
-                margin: 0 8px; /* Yatay boşluğu azalt */
+                width: 55px; /* Daha da küçültüldü */
+                height: 70px; 
+                font-size: 2.2em; 
+                margin: 0 5px; /* Yatay boşluğu minimuma indir */
             }
 
             /* Sayı paletini ve rakamları daha da küçült */
             .number-palette { 
-                gap: 8px; /* Boşluk azaltıldı */
-                padding: 10px 5px;
+                gap: 5px; /* Rakamlar arasındaki boşluk minimum */
+                padding: 5px; /* Palet etrafındaki boşluk minimum */
             }
             
             /* Rakamların boyutunu küçült */
             .draggable-number { 
-                width: 45px; 
-                height: 45px; 
-                line-height: 45px; 
-                font-size: 1.6em; 
-                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+                width: 40px; /* 40x40 piksel */
+                height: 40px; 
+                line-height: 40px; 
+                font-size: 1.5em; /* Yazı boyutu küçüldü */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
             }
         }
     </style>
@@ -843,3 +840,4 @@
 </body>
 
 </html>
+
