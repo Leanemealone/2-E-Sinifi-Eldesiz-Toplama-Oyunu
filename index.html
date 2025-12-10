@@ -204,15 +204,50 @@
             border-color: #3498db;
         }
 
-        /* DÜZELTME 1: Palet içi boşlukları azalt */
+        /* ################# SONUÇ VE PALET STİLLERİ ################# */
+        /* ... sonuç zone/digit kuralları burada ... */
+        
+        .result-digit:hover {
+            background-color: #f0f0f0;
+            border-color: #3498db;
+        }
+
+        /* YENİ: Palet artık iki satırlı ve gap ayarı buradan yönetiliyor */
         .number-palette { 
             display: flex; 
-            flex-wrap: wrap; 
             justify-content: center; 
-            gap: 10px; /* Boşluk azaltıldı (18px yerine 10px) */
-            padding: 10px; /* Dış boşluk azaltıldı (15px yerine 10px) */
-            border-top: 3px solid #e0e0e0; 
+            gap: 10px; /* Rakamlar arası boşluk */
+            padding: 8px 0; /* Üst/alt satırlar arasında boşluk bırakmak için */
+            border-top: 3px solid #e0e0e0; /* Sadece üst paletin üstünde olacak, bu yüzden JS ile halledeceğiz. */
         }
+        
+        /* Düzeltme 2'yi kaldırdık, sadece mobil küçültme kalacak */
+        .draggable-number { 
+            width: 50px; 
+            height: 50px; 
+            line-height: 50px; 
+            border-radius: 50%; 
+            font-size: 1.8em; 
+            font-weight: 600; 
+            cursor: grab; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+            transition: transform 0.1s, box-shadow 0.1s;
+            color: white; /* Rakamların rengi beyaz olmalı */
+        }
+        .draggable-number:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* YENİ: Sadece üst paletin üstünde çizgi olsun */
+        .top-row {
+             border-top: 3px solid #e0e0e0;
+        }
+        .bottom-row {
+             border-top: none; /* Alt satırın üstünde çizgi olmasın */
+        }
+
+        /* ... Renk Paleti (c0, c1, ...) kuralları burada ... */
 
         /* DÜZELTME 2: Sayı butonlarının boyutunu küçült */
         .draggable-number { 
@@ -260,11 +295,10 @@
             0% { transform: translateY(0) rotateZ(0); opacity: 1; }
             100% { transform: translateY(100vh) rotateZ(720deg); opacity: 0; }
         }
-/* ################# SON VE KESİN MOBİL DÜZENLEME ################# */
-        /* Ekran genişliği 400 piksel ve altı için maksimum küçültme */
-        @media (max-width: 400px) {
+/* ################# ÖZEL MOBİL UYUMLULUK (MEDIA QUERY) ################# */
+        /* Ekran genişliği 450 piksel ve altı için küçültme */
+        @media (max-width: 450px) {
             
-            /* Kontainerin iç ve dış boşluklarını minimuma indir */
             .container {
                 padding: 15px 5px; 
             }
@@ -272,33 +306,30 @@
                 padding: 10px;
             }
 
-            /* Header elemanlarının yazı boyutunu azalt */
             .header-item {
                 font-size: 0.8em;
                 padding: 5px 2px;
             }
 
-            /* Sonuç kutucuklarını küçült */
             .result-digit { 
-                width: 55px; /* Daha da küçültüldü */
-                height: 70px; 
-                font-size: 2.2em; 
-                margin: 0 5px; /* Yatay boşluğu minimuma indir */
+                width: 50px; 
+                height: 65px; 
+                font-size: 2em; 
+                margin: 0 5px; 
             }
 
-            /* Sayı paletini ve rakamları daha da küçült */
+            /* Rakamlar arası boşluk ve padding daraltıldı */
             .number-palette { 
-                gap: 5px; /* Rakamlar arasındaki boşluk minimum */
-                padding: 5px; /* Palet etrafındaki boşluk minimum */
+                gap: 5px; 
+                padding: 5px 0;
             }
             
             /* Rakamların boyutunu küçült */
             .draggable-number { 
-                width: 40px; /* 40x40 piksel */
+                width: 40px; 
                 height: 40px; 
                 line-height: 40px; 
-                font-size: 1.5em; /* Yazı boyutu küçüldü */
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                font-size: 1.5em; 
             }
         }
     </style>
@@ -354,7 +385,8 @@
             
             <div id="feedback"></div>
 
-            <div class="number-palette" id="numberPalette"></div>
+            <div class="number-palette top-row" id="numberPaletteTop"></div>
+            <div class="number-palette bottom-row" id="numberPaletteBottom"></div>
         </div>
 
         <div id="gameOverScreen" class="screen">
@@ -805,11 +837,12 @@
         }
         
         function renderNumberPalette() {
-            let html = '';
+            let htmlTop = '';
+            let htmlBottom = '';
             const colorClasses = ['c0', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9'];
 
             for (let i = 0; i <= 9; i++) {
-                html += `
+                const numberHtml = `
                     <div 
                         class="draggable-number ${colorClasses[i]}" 
                         draggable="true" 
@@ -824,8 +857,27 @@
                         ${i}
                     </div>
                 `;
+                
+                // 0'dan 4'e üst satır
+                if (i <= 4) {
+                    htmlTop += numberHtml;
+                } 
+                // 5'ten 9'a alt satır
+                else {
+                    htmlBottom += numberHtml;
+                }
             }
-            numberPalette.innerHTML = html;
+            
+            // Yeni ID'lere yerleştirme
+            const numberPaletteTop = document.getElementById('numberPaletteTop');
+            const numberPaletteBottom = document.getElementById('numberPaletteBottom');
+
+            if (numberPaletteTop) {
+                numberPaletteTop.innerHTML = htmlTop;
+            }
+            if (numberPaletteBottom) {
+                numberPaletteBottom.innerHTML = htmlBottom;
+            }
         }
 
 
@@ -840,5 +892,6 @@
 </body>
 
 </html>
+
 
 
