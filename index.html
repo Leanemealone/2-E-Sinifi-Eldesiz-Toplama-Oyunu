@@ -260,7 +260,50 @@
             0% { transform: translateY(0) rotateZ(0); opacity: 1; }
             100% { transform: translateY(100vh) rotateZ(720deg); opacity: 0; }
         }
+/* ################# ÖZEL MOBİL UYUMLULUK (MEDIA QUERY) ################# */
+        /* Ekran genişliği 500 piksel ve altı için özel kurallar */
+        @media (max-width: 500px) {
+            
+            /* Kontainerin iç boşluğunu azalt */
+            .container {
+                padding: 20px 10px; 
+            }
 
+            /* Header elemanlarının yazı boyutunu azalt */
+            .header-item {
+                font-size: 0.9em;
+                padding: 8px 3px;
+            }
+
+            /* İşlem hanesini ve sayıyı küçült */
+            .operation-container {
+                font-size: 3em; 
+                margin: 20px 0;
+            }
+
+            /* Sonuç kutucuklarını küçült */
+            .result-digit { 
+                width: 60px; 
+                height: 75px; 
+                font-size: 2.5em; 
+                margin: 0 8px; /* Yatay boşluğu azalt */
+            }
+
+            /* Sayı paletini ve rakamları daha da küçült */
+            .number-palette { 
+                gap: 8px; /* Boşluk azaltıldı */
+                padding: 10px 5px;
+            }
+            
+            /* Rakamların boyutunu küçült */
+            .draggable-number { 
+                width: 45px; 
+                height: 45px; 
+                line-height: 45px; 
+                font-size: 1.6em; 
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+            }
+        }
     </style>
 </head>
 <body>
@@ -798,4 +841,5 @@
 
     </script>
 </body>
+
 </html>
