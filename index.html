@@ -143,7 +143,7 @@
             align-items: center;
         }
         
-        /* ################# İŞLEM ALANI STİLLERİ (SIKIŞTIRILDI) ################# */
+        /* ################# İŞLEM ALANI STİLLERİ (DAHA SIKIŞTIRILDI) ################# */
 
         .operation-container {
             display: grid;
@@ -151,10 +151,10 @@
             grid-template-columns: 30px 140px; 
             justify-content: center;
             align-items: center;
-            font-size: 3.5em; /* KÜÇÜLTÜLDÜ */
+            font-size: 3.2em; /* DAHA DA KÜÇÜLTÜLDÜ (3.5em yerine 3.2em) */
             font-weight: 600;
-            margin: 25px 0 15px 0; /* Dikey boşluklar daraltıldı */
-            min-height: 150px; /* KÜÇÜLTÜLDÜ */
+            margin: 15px 0 10px 0; /* Dikey boşluklar DAHA DA daraltıldı */
+            min-height: 140px; /* KÜÇÜLTÜLDÜ (150px yerine 140px) */
         }
 
         #currentOperationGrid {
@@ -165,7 +165,7 @@
         }
 
         .op-number {
-            line-height: 1; /* Satır yüksekliği daraltıldı */
+            line-height: 0.95; /* DAHA DA DARALTILDI */
             padding-right: 8px;
             color: #2c3e50;
         }
@@ -173,40 +173,40 @@
         .op-line-separator {
             grid-column: 1 / span 2; 
             width: 100%;
-            border-bottom: 3px solid #334455; /* Çizgi kalınlığı azaltıldı */
-            margin-top: 5px; /* Üst boşluk azaltıldı */
+            border-bottom: 2px solid #334455; /* Çizgi kalınlığı azaltıldı */
+            margin-top: 5px; 
         }
 
         #opPlusContainer {
             grid-column: 1; 
-            line-height: 1; /* Satır yüksekliği daraltıldı */
+            line-height: 1; 
             align-self: end; 
-            padding-bottom: 8px; /* Alt boşluk azaltıldı */
-            font-size: 1.1em; /* Küçültüldü */
+            padding-bottom: 5px; /* Alt boşluk azaltıldı */
+            font-size: 1em; 
             color: #3498db; 
         }
 
-        /* ################# SONUÇ BÖLGESİ STİLLERİ (SIKIŞTIRILDI) ################# */
+        /* ################# SONUÇ BÖLGESİ STİLLERİ (DAHA SIKIŞTIRILDI) ################# */
 
         .result-zone { 
             display: flex; 
             justify-content: center; 
-            margin-top: 15px; /* Üst boşluk azaltıldı */
-            margin-bottom: 25px; /* Alt boşluk azaltıldı */
+            margin-top: 10px; /* Üst boşluk minimalize edildi */
+            margin-bottom: 15px; /* Alt boşluk minimalize edildi */
         }
         
         .result-digit { 
-            width: 65px; /* KÜÇÜLTÜLDÜ */
-            height: 80px; /* KÜÇÜLTÜLDÜ */
-            border: 3px dashed #aebcce; /* Kalınlık azaltıldı */
-            margin: 0 10px; /* Yatay boşluk azaltıldı */
+            width: 60px; /* DAHA DA KÜÇÜLTÜLDÜ (65px yerine 60px) */
+            height: 70px; /* DAHA DA KÜÇÜLTÜLDÜ (80px yerine 70px) */
+            border: 2px dashed #aebcce; /* Çizgi kalınlığı azaltıldı */
+            margin: 0 8px; /* Yatay boşluk azaltıldı */
             display: flex; 
             justify-content: center; 
             align-items: center; 
-            font-size: 3em; /* KÜÇÜLTÜLDÜ */
+            font-size: 2.8em; /* DAHA DA KÜÇÜLTÜLDÜ (3em yerine 2.8em) */
             color: #334455; 
             background-color: #fcfcfc; 
-            border-radius: 10px; /* Radius azaltıldı */
+            border-radius: 8px; /* Radius azaltıldı */
             transition: all 0.2s; 
         }
         .result-digit:hover {
@@ -216,13 +216,13 @@
         
         /* ################# SONUÇ BÖLGESİ STİLLERİ BİTİŞ ################# */
 
-        /* YENİ: Palet artık iki satırlı ve gap ayarı buradan yönetiliyor (SIKIŞTIRILDI) */
+        /* YENİ: Palet artık iki satırlı ve gap ayarı buradan yönetiliyor (DAHA SIKIŞTIRILDI) */
         .number-palette { 
             display: flex; 
             justify-content: center; 
-            gap: 8px; /* Rakamlar arası boşluk daraltıldı */
-            padding: 5px 0; /* Üst/alt satırlar arasında boşluk daraltıldı */
-            border-top: 3px solid #e0e0e0; 
+            gap: 6px; /* Rakamlar arası boşluk daraltıldı */
+            padding: 4px 0; /* Üst/alt satırlar arasında boşluk daraltıldı */
+            border-top: 2px solid #e0e0e0; /* Çizgi kalınlığı azaltıldı */
         }
         
         /* Sayı butonlarının varsayılan boyutu (50px) korunuyor */
@@ -245,7 +245,7 @@
 
         /* YENİ: Sadece üst paletin üstünde çizgi olsun */
         .top-row {
-             border-top: 3px solid #e0e0e0;
+             border-top: 2px solid #e0e0e0; /* Çizgi kalınlığı azaltıldı */
         }
         .bottom-row {
              border-top: none;
@@ -275,10 +275,10 @@
         } 
 
         #feedback { 
-            min-height: 30px; /* KÜÇÜLTÜLDÜ */
-            font-size: 1.4em; /* Küçültüldü */
+            min-height: 30px; 
+            font-size: 1.4em; 
             font-weight: 700; 
-            margin: 15px 0; /* Dikey boşluk azaltıldı */
+            margin: 10px 0; /* Dikey boşluk DAHA AZALTILDI (15px yerine 10px) */
         }
         
         /* ################# KONFETI STİLİ ################# */
@@ -315,21 +315,21 @@
             }
 
             .result-digit { 
-                width: 45px; /* Daha da küçültüldü */
-                height: 55px; /* Daha da küçültüldü */
-                font-size: 1.8em; /* Küçültüldü */
-                margin: 0 4px; /* Yatay boşluk azaltıldı */
+                width: 45px; 
+                height: 55px;
+                font-size: 1.8em;
+                margin: 0 4px;
             }
 
             /* Rakamlar arası boşluk ve padding daraltıldı */
             .number-palette { 
-                gap: 4px; /* Çok dar ekranlar için boşluk minimal */
+                gap: 4px; 
                 padding: 4px 0;
             }
             
             /* Rakamların boyutunu küçült */
             .draggable-number { 
-                width: 38px; /* Minimal boyut */
+                width: 38px; 
                 height: 38px; 
                 line-height: 38px; 
                 font-size: 1.4em; 
