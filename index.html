@@ -824,10 +824,9 @@
 
         function renderHighScores() {
             const scores = getHighScores();
-            // HATA DÜZELTİLDİ: JavaScript hatasına neden olan 'return' ifadesi tek satıra indirildi.
+            // Sorun yaratan ve tek satırda olması gereken template literal düzeltildi.
             const scoreHtml = scores.map((s, index) => {
                 const deleteButton = `<button onclick="deleteSingleScoreWithPassword('${s.id}', '${s.player}')" style="background: #e74c3c; color: white; border: none; border-radius: 6px; padding: 4px 8px; margin-left: 12px; cursor: pointer; font-size: 0.9em; line-height: 1.2;">🗑️ Sil</button>`;
-                // Hata giderildi: Return ifadesi hataya neden olmayacak şekilde düzenlendi.
                 return `<div class="score-item"><span>${index + 1}. ${s.player}</span><span>${s.score}${deleteButton}</span></div>`; 
             }).join('');
             
@@ -884,7 +883,7 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderPlayerList();
+            renderPlayerList(); // Bu fonksiyon öğrenci listesini yüklüyor
             renderHighScores();
             renderNumberPalette();
             splashScreen.classList.add('active'); 
