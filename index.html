@@ -130,7 +130,7 @@
         
         /* KAYDIRMALI SKOR LİSTESİ İÇİN STİL */
         #highScoresContent {
-            max-height: 250px; 
+            max-height: 250px;
             overflow-y: auto; 
             padding-right: 5px; 
         }
@@ -190,7 +190,7 @@
             align-self: end; 
             padding-bottom: 5px; 
             font-size: 1em;
-            color: #3498db; 
+            color: #3498db;
         }
 
         /* ################# SONUÇ BÖLGESİ STİLLERİ ################# */
@@ -297,9 +297,9 @@
 
         @keyframes confetti-fall {
             0% { transform: translateY(0) rotateZ(0);
-                opacity: 1; }
+            opacity: 1; }
             100% { transform: translateY(100vh) rotateZ(720deg);
-                opacity: 0; }
+            opacity: 0; }
         }
         /* ################# ÖZEL MOBİL UYUMLULUK ################# */
         @media (max-width: 450px) {
@@ -313,30 +313,30 @@
 
             .header-item {
                 font-size: 0.8em;
-                padding: 5px 2px;
+            padding: 5px 2px;
             }
 
             .result-digit { 
                 width: 45px;
-                height: 55px;
+            height: 55px;
                 font-size: 1.8em;
                 margin: 0 4px;
             }
 
             .number-palette { 
                 gap: 4px;
-                padding: 4px 0;
+            padding: 4px 0;
             }
             
             .draggable-number { 
                 width: 38px;
-                height: 38px; 
+            height: 38px; 
                 line-height: 38px; 
                 font-size: 1.4em; 
             }
             /* Kaydırmalı alanın mobil uyumluluğu */
             #highScoresContent {
-                max-height: 180px; 
+                max-height: 180px;
             }
         }
     </style>
@@ -350,6 +350,7 @@
 
             <button id="togglePlayerListBtn" onclick="togglePlayerList()">Adınızı Seçin</button>
      
+      
             <div class="player-list-wrapper" id="playerListWrapper">
                 <div class="player-list" id="playerListContainer">
                     </div>
@@ -357,13 +358,15 @@
 
             <button onclick="clearAllScoresWithPassword()" style="
                 background-color: #e74c3c; 
+          
                 color: white;
                 padding: 12px 25px;
                 font-size: 1em;
                 border: none;
                 border-radius: 10px;
                 cursor: pointer;
-                margin-top: 20px;
+       
+                 margin-top: 20px;
                 box-shadow: 0 3px 5px rgba(231, 76, 60, 0.3);
             ">Tüm Skorları Sil (Yönetici)</button>
             
@@ -372,6 +375,7 @@
                 <div id="highScoresContent">
                     </div>
             </div>
+    
         </div>
 
         <div id="gameScreen" class="screen">
@@ -380,6 +384,7 @@
                 <span id="playerNameDisplay" class="header-item">Oyuncu: -</span>
                 <span id="scoreDisplay" class="header-item">Puan: 0</span>
                 <span id="timerDisplay" class="header-item">Süre: 120</span>
+      
             </div>
 
             <div class="operation-container">
@@ -389,6 +394,7 @@
                 <div class="op-line-separator"></div> 
             </div>
 
+      
             <div class="result-zone">
                 <div class="result-digit" data-place="tens" ondrop="drop(event, this)" ondragover="allowDrop(event)">?</div>
          
@@ -396,6 +402,7 @@
         
             </div>
             
+          
             <div id="feedback"></div>
 
             <div class="number-palette top-row" id="numberPaletteTop"></div>
@@ -407,17 +414,17 @@
             <h2>Oyun Bitti!</h2>
           
             <p id="finalScoreText" style="font-size: 1.2em;
-                font-weight: 600; color: #34495e;"></p>
+            font-weight: 600; color: #34495e;"></p>
             <button onclick="window.location.reload()" style="
                 background-color: #2ecc71;
-                color: white;
+            color: white;
                 padding: 15px 30px;
                 font-size: 1.2em;
                 border: none;
                 border-radius: 10px;
                 cursor: pointer;
                 margin-top: 15px;
-                box-shadow: 0 4px 6px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 4px 6px rgba(46, 204, 113, 0.4);
             ">Yeniden Başla</button>
         </div>
 
@@ -430,6 +437,9 @@
         const ADMIN_PASSWORD = "ogretmen2024"; 
         const GAME_DURATION = 120; 
 
+        // !!! GÜNCELLEME: APPS SCRIPT URL'NİZ BURADA TANIMLANDI !!!
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwHpF5nyt-1LRjNaweN7ixAyK1iYI5iyvlAe1OLAV1Oo_hYN3X6ICyqty58qNqlFz3F/exec";
+        
         // ################## ÖĞRENCİ ADLARI VE ŞİFRELERİ ##################
        
         const STUDENT_PASSWORDS = {
@@ -446,6 +456,7 @@
             "BETÜL SENA GÜNGÖR": "2274",
             "DERİN DURU ÇAL": "5010",
             "DİDEM SOYLU": "4207",
+        
             "EMİR RÜZGAR GÖLEŞ": "5822",
      
             "ESİLA YİĞİT": "2644",
@@ -454,6 +465,7 @@
             "EYMEN YAYLACIK": "2425",
             "FATMA HİRA ASLAN": "2310",
             "FEYZA EMİNE ALTUN": "5142",
+          
             "HAMZA KAĞAN ÖZTAŞ": "2486",
             
             "HATİCE ÇALİMLİ": "1352",
@@ -462,6 +474,7 @@
             "HÜSNE SERRA CEREN": "5303",
             "İMRAN YAZICI": "2832",
             "MİRAÇ ÖZÇELEBİ": "3552",
+         
             "MUSAB CİHAT KILIÇ": "2841",
             "NİSANUR FİLİZ": "1234",
          
@@ -470,6 +483,7 @@
  
             "SİNAN BARAN": "4840",
             "TUANA TÜRK DERİN ÇETİN": "1961",
+          
             "UMUT ARAS KUTLU": "2216",
             "YİĞİT ALİ BENLİ": "2559",
             "YİĞİT ASAF İŞSEVER": "4888",
@@ -478,6 +492,7 @@
            
             "YUSUF BOZDOĞAN": "4810",
             "YUSUF EYMEN ÇINAR": "5046",
+       
             "ZEYNEB MERYEM TAHİROĞLU": "4422",
             "ZEYNEP AKSOY": "2414",
             "ZÜMRA BELİZ YILDIRIM": "4949"
@@ -508,8 +523,9 @@
         const numberPalette = document.getElementById('numberPalette');
         const resultDigitsElements = document.querySelectorAll('.result-digit');
         let currentDragElement = null;
-        // ------------------ LOCAL STORAGE YÖNETİMİ ------------------
-        function getHighScores() {
+        
+        // ------------------ YEDEK: LOKAL SKOR YÖNETİMİ (Sunucu hatası için) ------------------
+        function getLocalHighScoresBackup() {
             try {
                 const scores = JSON.parse(localStorage.getItem('toplamaScores'));
                 return Array.isArray(scores) ? scores : [];
@@ -517,8 +533,8 @@
             }
         }
 
-        function saveScore(player, score) {
-            const scores = getHighScores();
+        function saveLocalScoreBackup(player, score) {
+            const scores = getLocalHighScoresBackup();
             const newScoreEntry = { 
                 id: generateUniqueId(),
                 player: player, 
@@ -529,21 +545,82 @@
             scores.sort((a, b) => b.score - a.score); 
             
             localStorage.setItem('toplamaScores', JSON.stringify(scores));
-            renderHighScores();
+        }
+
+        // ------------------ GÜNCEL: SUNUCU TABANLI SKOR YÖNETİMİ ------------------
+        
+        // GÜNCELLEME: Skorları Apps Script URL'sinden çek
+        async function getHighScores() {
+            try {
+                const response = await fetch(SCRIPT_URL, { 
+                    method: 'GET' // Apps Script'teki doGet() fonksiyonunu çalıştırır
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP Hata: ${response.status}`);
+                }
+
+                const scores = await response.json();
+                // Verinin doğru formatta gelmesi beklenir
+                return Array.isArray(scores) ? scores : [];
+            } catch (e) { 
+                console.error("Hata: Skorlar sunucudan çekilemedi. Lokal yedek kullanılıyor.", e);
+                // Sunucu hatası durumunda lokal yedeği kullan
+                return getLocalHighScoresBackup(); 
+            }
+        }
+
+        // GÜNCELLEME: Skoru Apps Script URL'sine kaydet
+        async function saveScore(player, score) {
+            const newScoreEntry = { 
+                player: player, 
+                score: score 
+            };
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST', // Apps Script'teki doPost() fonksiyonunu çalıştırır
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newScoreEntry) // Veriyi JSON formatında gönderiyoruz
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP Hata: ${response.status}`);
+                }
+                
+                // Kayıt başarılı olduktan sonra lokal yedeği de güncelleyebilirsiniz
+                saveLocalScoreBackup(player, score); 
+                
+                // Ardından skor listesini yeniden sunucudan çekip render et
+                await renderHighScores(); 
+
+            } catch (e) {
+                console.error("Hata: Skor kaydı sunucuya gönderilemedi. Lokal olarak kaydedildi.", e);
+                // Hata durumunda sadece lokal yedeğe kaydet ve lokal skorları göster
+                saveLocalScoreBackup(player, score);
+                await renderHighScores(); 
+            }
         }
 
         // ------------------ SKOR SİLME FONKSİYONLARI ------------------
         
+        // NOT: Tekli skor silme ve tüm skorları silme işlevleri, 
+        // Google Sheets üzerinde "doPost" veya "doGet" ile ek bir komut gerektirir.
+        // Bu kodda sadece Local Storage temizlenir. Eğer Sheets'ten silme de istenirse, 
+        // Apps Script tarafına ek bir fonksiyon yazılması gerekir.
         function deleteSingleScoreWithPassword(scoreId, playerName) {
             const enteredPassword = prompt(`${playerName} oyuncusunun kaydını silmek için YÖNETİCİ şifresini girin:`);
             if (enteredPassword === ADMIN_PASSWORD) {
-                let scores = getHighScores();
+                let scores = getLocalHighScoresBackup(); // Local Storage'dan çeker
                 const updatedScores = scores.filter(s => 
                     s.id !== scoreId 
                 );
-                localStorage.setItem('toplamaScores', JSON.stringify(updatedScores));
+                localStorage.setItem('toplamaScores', JSON.stringify(updatedScores)); // Local Storage'ı günceller
+                // SUNUCUDAN SİLME FONKSİYONU BURAYA GELMELİ (şimdilik sadece lokal siler)
                 renderHighScores();
-                alert(`${playerName} oyuncusunun kaydı silindi.`);
+                alert(`${playerName} oyuncusunun lokal kaydı silindi.`);
 
             } else if (enteredPassword !== null) {
                 alert('Hata! Girilen şifre yanlış.');
@@ -553,9 +630,10 @@
         function clearAllScoresWithPassword() {
             const enteredPassword = prompt("Tüm Skorları Silmek İçin YÖNETİCİ şifresini girin:");
             if (enteredPassword === ADMIN_PASSWORD) {
-                localStorage.removeItem('toplamaScores');
+                localStorage.removeItem('toplamaScores'); // Local Storage'ı temizler
+                // SUNUCUDAN SİLME FONKSİYONU BURAYA GELMELİ (şimdilik sadece lokal siler)
                 renderHighScores();
-                alert('Tebrikler! Tüm Skorlar Başarıyla Sıfırlandı.');
+                alert('Tebrikler! Lokal Skorlar Başarıyla Sıfırlandı.');
             } else if (enteredPassword !== null) {
                 alert('Hata! Girilen şifre yanlış.');
             }
@@ -628,7 +706,7 @@
             gameOverScreen.classList.add('active');
             clearInterval(timerInterval);
             document.getElementById('finalScoreText').textContent = `${currentPlayer}, Toplam Puanın: ${currentScore}`;
-            saveScore(currentPlayer, currentScore);
+            saveScore(currentPlayer, currentScore); // SKOR KAYDETME ARTIK SUNUCUYA YÖNELİK
         }
 
         function updateDisplay() {
@@ -790,36 +868,39 @@
         }
 
         function handleCorrectAnswer() {
-    currentScore += 10; // Yeni: Her doğru cevap 10 puan
-    updateDisplay();
-    launchConfetti(); 
-    feedbackDisplay.style.color = '#2ecc71'; 
-    feedbackDisplay.textContent = 'Aferin! 🌟 (+10 Puan) Yeni İşlem Geliyor...';
-    setTimeout(() => { generateNewOperation(); }, 1500);
-}
+            currentScore += 10;
+            // Yeni: Her doğru cevap 10 puan
+            updateDisplay();
+            launchConfetti(); 
+            feedbackDisplay.style.color = '#2ecc71'; 
+            feedbackDisplay.textContent = 'Aferin! 🌟 (+10 Puan) Yeni İşlem Geliyor...';
+            setTimeout(() => { generateNewOperation(); }, 1500);
+        }
 
-function handleWrongAnswer() {
-    currentScore = Math.max(0, currentScore - 5); // Yeni: Her yanlış cevap -5 puan, puan 0'ın altına düşmez
-    updateDisplay(); // Puanı hemen güncelliyoruz
-    
-    feedbackDisplay.style.color = '#e74c3c';
-    feedbackDisplay.textContent = 'Yanlış yaptın! (-5 Puan) Yeniden dene. 🤔';
-    
-    // Sonuç hanelerini sıfırlama işlemi (Bu kısım aynı kalmıştır)
-    resultDigitsElements.forEach(el => {
-        el.textContent = '?';
-        el.className = 'result-digit';
-    });
-    resultDigits = { ones: null, tens: null };
-}
+        function handleWrongAnswer() {
+            currentScore = Math.max(0, currentScore - 5);
+            // Yeni: Her yanlış cevap -5 puan, puan 0'ın altına düşmez
+            updateDisplay();
+            // Puanı hemen güncelliyoruz
+            
+            feedbackDisplay.style.color = '#e74c3c';
+            feedbackDisplay.textContent = 'Yanlış yaptın! (-5 Puan) Yeniden dene. 🤔';
+            
+            // Sonuç hanelerini sıfırlama işlemi (Bu kısım aynı kalmıştır)
+            resultDigitsElements.forEach(el => {
+                el.textContent = '?';
+                el.className = 'result-digit';
+            });
+            resultDigits = { ones: null, tens: null };
+        }
 
         // ------------------ İLK YÜKLEME VE RENDER ------------------
         
         function renderPlayerList() {
-            const scores = getHighScores();
+            // Lokal yedek skorları da hesaba kat, çünkü sunucu erişilemezse bile listeyi göstermek gerekir
+            const scores = getLocalHighScoresBackup(); 
             // Hem başlangıç oyuncularını hem de skorlarda adı geçenleri tekil (unique) olarak birleştir
-            let players = [...new Set([...INITIAL_PLAYERS, ...scores.map(s => s.player)])]; 
-            
+            let players = [...new Set([...INITIAL_PLAYERS, ...scores.map(s => s.player)])];
             if (playerListContainer) {
                 playerListContainer.innerHTML = players.map(name => 
                     `<button onclick="checkPasswordAndStartGame('${name}')">${name}</button>`
@@ -827,20 +908,22 @@ function handleWrongAnswer() {
             }
         }
 
-        function renderHighScores() {
-            const scores = getHighScores();
+        // GÜNCELLEME: Artık async bir fonksiyondur
+        async function renderHighScores() {
+            const scores = await getHighScores(); // Sunucudan skorları bekler
             // Sorun yaratan ve tek satırda olması gereken template literal düzeltildi.
             const scoreHtml = scores.map((s, index) => {
-                const deleteButton = `<button onclick="deleteSingleScoreWithPassword('${s.id}', '${s.player}')" style="background: #e74c3c; color: white; border: none; border-radius: 6px; padding: 4px 8px; margin-left: 12px; cursor: pointer; font-size: 0.9em; line-height: 1.2;">🗑️ Sil</button>`;
+                // NOT: Lokal yedekleme için silme butonu Local Storage ID'sini kullanır. 
+                // Sunucu tabanlı silme için bu ID'ler Sheets'ten gelen gerçek ID'ler olmalıdır.
+                // Şu anki Apps Script yapısı ID dönmediği için, bu buton sadece Lokal yedeği siler.
+                const deleteButton = `<button onclick="deleteSingleScoreWithPassword('${s.id || s.player}', '${s.player}')" style="background: #e74c3c; color: white; border: none; border-radius: 6px; padding: 4px 8px; margin-left: 12px; cursor: pointer; font-size: 0.9em; line-height: 1.2;">🗑️ Sil</button>`;
                 return `<div class="score-item"><span>${index + 1}. ${s.player}</span><span>${s.score}${deleteButton}</span></div>`; 
             }).join('');
-            
             // SKOR YÜKLEME ALANI
             const highScoresContent = document.getElementById('highScoresContent');
-
             if (highScoresContent) {
                  highScoresContent.innerHTML = scoreHtml ||
-                    '<p style="margin-top: 15px; color: #777;">Henüz skor yok. İlk sen oyna!</p>';
+            '<p style="margin-top: 15px; color: #777;">Henüz skor yok. İlk sen oyna!</p>';
             }
         }
         
