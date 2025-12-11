@@ -790,23 +790,28 @@
         }
 
         function handleCorrectAnswer() {
-            currentScore++;
-            updateDisplay();
-            launchConfetti(); 
-            feedbackDisplay.style.color = '#2ecc71'; 
-            feedbackDisplay.textContent = 'Aferin! 🌟 Yeni İşlem Geliyor...';
-            setTimeout(() => { generateNewOperation(); }, 1500);
-        }
+    currentScore += 10; // Yeni: Her doğru cevap 10 puan
+    updateDisplay();
+    launchConfetti(); 
+    feedbackDisplay.style.color = '#2ecc71'; 
+    feedbackDisplay.textContent = 'Aferin! 🌟 (+10 Puan) Yeni İşlem Geliyor...';
+    setTimeout(() => { generateNewOperation(); }, 1500);
+}
 
-        function handleWrongAnswer() {
-            feedbackDisplay.style.color = '#e74c3c';
-            feedbackDisplay.textContent = 'Yanlış yaptın, yeniden dene. 🤔';
-            resultDigitsElements.forEach(el => {
-                el.textContent = '?';
-                el.className = 'result-digit';
-            });
-            resultDigits = { ones: null, tens: null };
-        }
+function handleWrongAnswer() {
+    currentScore = Math.max(0, currentScore - 5); // Yeni: Her yanlış cevap -5 puan, puan 0'ın altına düşmez
+    updateDisplay(); // Puanı hemen güncelliyoruz
+    
+    feedbackDisplay.style.color = '#e74c3c';
+    feedbackDisplay.textContent = 'Yanlış yaptın! (-5 Puan) Yeniden dene. 🤔';
+    
+    // Sonuç hanelerini sıfırlama işlemi (Bu kısım aynı kalmıştır)
+    resultDigitsElements.forEach(el => {
+        el.textContent = '?';
+        el.className = 'result-digit';
+    });
+    resultDigits = { ones: null, tens: null };
+}
 
         // ------------------ İLK YÜKLEME VE RENDER ------------------
         
@@ -891,3 +896,4 @@
     </script>
 </body>
 </html>
+
