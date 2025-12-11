@@ -22,9 +22,7 @@
             background-size: 20px 20px;
             padding: 20px;
             position: relative;
-            /* DEĞİŞİKLİK: overflow: hidden yerine, gerektiğinde dikey kaydırmayı etkinleştir */
-            overflow-y: auto; 
-            overflow-x: hidden; 
+            overflow: hidden;
         }
 
         .container {
@@ -347,21 +345,21 @@
             <p style="font-size: 1.1em; color: #555;">Oyuna başlamak için adınızı seçin ve bireysel şifrenizi girin.</p>
 
             <button id="togglePlayerListBtn" onclick="togglePlayerList()">Adınızı Seçin</button>
-      
+     
             <div class="player-list-wrapper" id="playerListWrapper">
                 <div class="player-list" id="playerListContainer">
-                     </div>
+                    </div>
             </div>
 
             <button onclick="clearAllScoresWithPassword()" style="
-                
+               
                 background-color: #e74c3c; 
                 color: white;
                 padding: 12px 25px;
                 font-size: 1em;
                 border: none;
                 border-radius: 10px;
-            
+           
                 cursor: pointer;
                 margin-top: 20px;
                 box-shadow: 0 3px 5px rgba(231, 76, 60, 0.3);
@@ -382,7 +380,7 @@
 
             <div class="operation-container">
                 <div id="opPlusContainer"></div> 
-            
+          
                 <div id="currentOperationGrid"></div>
                 <div class="op-line-separator"></div> 
             </div>
@@ -426,7 +424,7 @@
         const GAME_DURATION = 120; 
 
         // ################## ÖĞRENCİ ADLARI VE ŞİFRELERİ ##################
-        
+       
         const STUDENT_PASSWORDS = {
             "AHMET EFE AYVAZ": "4910",
             "ALİ ARAS AYYILDIZ": "5335",
@@ -434,7 +432,7 @@
             "ALYA DEMİRAL": "2041",
             "ASEL LENA AYYILDIZ": "2441",
             "ASIM MİRAÇ KARA": "2766",
-        
+       
             "AYBÜKE ÖZKAN": "4850",
             "BERAT ALİ AKDEMİR": "2532",
             "BETÜL SENA GÜNGÖR": "2274",
@@ -442,7 +440,7 @@
             "DİDEM SOYLU": "4207",
             "EMİR RÜZGAR GÖLEŞ": "5822",
             "ESİLA YİĞİT": "2644",
-      
+     
             "EYMEN ARAS PULATKAN": "1722",
             "EYMEN YAYLACIK": "2425",
             "FATMA HİRA ASLAN": "2310",
@@ -450,7 +448,7 @@
             "HAMZA KAĞAN ÖZTAŞ": "2486",
             "HATİCE ÇALİMLİ": "1352",
             "HELİN ADA": "2661",
-    
+   
             "HÜSNE SERRA CEREN": "5303",
             "İMRAN YAZICI": "2832",
             "MİRAÇ ÖZÇELEBİ": "3552",
@@ -458,14 +456,14 @@
             "NİSANUR FİLİZ": "1234",
             "ÖMER ASAF GÜNGÖR": "2274",
             "SAİD HAMZA ASLAN": "2272",
-    
+ 
             "SİNAN BARAN": "4840",
             "TUANA TÜRK DERİN ÇETİN": "1961",
             "UMUT ARAS KUTLU": "2216",
             "YİĞİT ALİ BENLİ": "2559",
             "YİĞİT ASAF İŞSEVER": "4888",
             "YUSUF BERAT TANRIVERDİ": "4682",
-            
+           
             "YUSUF BOZDOĞAN": "4810",
             "YUSUF EYMEN ÇINAR": "5046",
             "ZEYNEB MERYEM TAHİROĞLU": "4422",
@@ -495,8 +493,7 @@
         const opPlusContainer = document.getElementById('opPlusContainer');
         const currentOperationGrid = document.getElementById('currentOperationGrid');
         const playerListWrapper = document.getElementById('playerListWrapper');
-        const numberPaletteTop = document.getElementById('numberPaletteTop'); // Tanımlamalar buraya eklendi
-        const numberPaletteBottom = document.getElementById('numberPaletteBottom'); // Tanımlamalar buraya eklendi
+        const numberPalette = document.getElementById('numberPalette');
         const resultDigitsElements = document.querySelectorAll('.result-digit');
         
         let currentDragElement = null;
@@ -608,7 +605,7 @@
                 timeLeft--;
                 timerDisplay.textContent = `⏳ Süre: ${timeLeft}`;
                 if (timeLeft <= 0) {
-                 
+                  
                     clearInterval(timerInterval);
                     endGame();
                 }
@@ -825,7 +822,7 @@
                     </button>`;
 
                 return `<div class="score-item">
-                        
+                       
                         <span>${index + 1}. ${s.player}</span>
                             <span>${s.score}${deleteButton}</span>
                         </div>`;
@@ -837,7 +834,6 @@
             `;
         }
         
-        // DEĞİŞİKLİK: renderNumberPalette fonksiyonu, iki ayrı div'e (top/bottom) rakamları paylaştırmak için tamamlandı
         function renderNumberPalette() {
             let htmlTop = '';
             let htmlBottom = '';
@@ -847,14 +843,17 @@
                     <div 
                         class="draggable-number ${colorClasses[i]}" 
                         draggable="true" 
+ 
                         data-value="${i}" 
                         data-color-class="${colorClasses[i]}"
                         ondragstart="drag(event)"
                         ondragover="allowDrop(event)"
+   
                         ondrop="drop(event, this)"
                         ontouchstart="touchStart(event)"
                         ontouchmove="touchMove(event)"
                         ontouchend="touchEnd(event)">
+      
                         ${i}
                     </div>
                 `;
@@ -887,7 +886,6 @@
             renderNumberPalette();
             splashScreen.classList.add('active'); 
         });
-
     </script>
 </body>
 
