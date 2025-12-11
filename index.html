@@ -128,11 +128,11 @@
         #highScores h3 { color: #334455;
         }
         
-        /* ÖNERİLEN YENİ STİL: Skor listesi içeriğini kaydırmalı yapmak için */
+        /* KAYDIRMALI SKOR LİSTESİ İÇİN STİL */
         #highScoresContent {
-            max-height: 250px; /* Maksimum yüksekliği belirleyin */
-            overflow-y: auto; /* Dikey kaydırma çubuğunu gerekliyse göster */
-            padding-right: 5px; /* Kaydırma çubuğu için sağ boşluk bırakılabilir */
+            max-height: 250px; 
+            overflow-y: auto; 
+            padding-right: 5px; 
         }
         
         .score-item { 
@@ -151,19 +151,17 @@
             align-items: center;
         }
         
-        /* ################# İŞLEM ALANI STİLLERİ (DAHA SIKIŞTIRILDI) ################# */
+        /* ################# İŞLEM ALANI STİLLERİ ################# */
 
         .operation-container {
             display: grid;
-            /* YATAY KONUM: İşaret için 30px, Sayılar için 140px */
             grid-template-columns: 30px 140px;
             justify-content: center;
             align-items: center;
-            font-size: 3.2em; /* DAHA DA KÜÇÜLTÜLDÜ (3.5em yerine 3.2em) */
+            font-size: 3.2em; 
             font-weight: 600;
-            margin: 15px 0 10px 0; /* Dikey boşluklar DAHA DA daraltıldı */
+            margin: 15px 0 10px 0; 
             min-height: 140px;
-            /* KÜÇÜLTÜLDÜ (150px yerine 140px) */
         }
 
         #currentOperationGrid {
@@ -175,7 +173,6 @@
 
         .op-number {
             line-height: 0.95;
-            /* DAHA DA DARALTILDI */
             padding-right: 8px;
             color: #2c3e50;
         }
@@ -183,7 +180,7 @@
         .op-line-separator {
             grid-column: 1 / span 2;
             width: 100%;
-            border-bottom: 2px solid #334455; /* Çizgi kalınlığı azaltıldı */
+            border-bottom: 2px solid #334455; 
             margin-top: 5px;
         }
 
@@ -191,37 +188,32 @@
             grid-column: 1;
             line-height: 1; 
             align-self: end; 
-            padding-bottom: 5px; /* Alt boşluk azaltıldı */
+            padding-bottom: 5px; 
             font-size: 1em;
             color: #3498db; 
         }
 
-        /* ################# SONUÇ BÖLGESİ STİLLERİ (DAHA SIKIŞTIRILDI) ################# */
+        /* ################# SONUÇ BÖLGESİ STİLLERİ ################# */
 
         .result-zone { 
             display: flex;
             justify-content: center; 
-            margin-top: 10px; /* Üst boşluk minimalize edildi */
+            margin-top: 10px; 
             margin-bottom: 15px;
-            /* Alt boşluk minimalize edildi */
         }
         
         .result-digit { 
             width: 60px;
-            /* DAHA DA KÜÇÜLTÜLDÜ (65px yerine 60px) */
             height: 70px;
-            /* DAHA DA KÜÇÜLTÜLDÜ (80px yerine 70px) */
             border: 2px dashed #aebcce;
-            /* Çizgi kalınlığı azaltıldı */
             margin: 0 8px;
-            /* Yatay boşluk azaltıldı */
             display: flex; 
             justify-content: center;
             align-items: center; 
-            font-size: 2.8em; /* DAHA DA KÜÇÜLTÜLDÜ (3em yerine 2.8em) */
+            font-size: 2.8em; 
             color: #334455;
             background-color: #fcfcfc; 
-            border-radius: 8px; /* Radius azaltıldı */
+            border-radius: 8px; 
             transition: all 0.2s;
         }
         .result-digit:hover {
@@ -229,20 +221,16 @@
             border-color: #3498db;
         }
         
-        /* ################# SONUÇ BÖLGESİ STİLLERİ BİTİŞ ################# */
+        /* ################# PALET STİLLERİ ################# */
 
-        /* YENİ: Palet artık iki satırlı ve gap ayarı buradan yönetiliyor (DAHA SIKIŞTIRILDI) */
         .number-palette { 
             display: flex;
             justify-content: center; 
-            gap: 6px; /* Rakamlar arası boşluk daraltıldı */
+            gap: 6px; 
             padding: 4px 0;
-            /* Üst/alt satırlar arasında boşluk daraltıldı */
             border-top: 2px solid #e0e0e0;
-            /* Çizgi kalınlığı azaltıldı */
         }
         
-        /* Sayı butonlarının varsayılan boyutu (50px) korunuyor */
         .draggable-number { 
             width: 50px;
             height: 50px; 
@@ -253,21 +241,18 @@
             cursor: grab; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: transform 0.1s, box-shadow 0.1s;
-            color: white; /* Rakamların rengi beyaz olmalı */
+            color: white; 
         }
         .draggable-number:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
         }
 
-        /* YENİ: Sadece üst paletin üstünde çizgi olsun */
         .top-row {
              border-top: 2px solid #e0e0e0;
-            /* Çizgi kalınlığı azaltıldı */
         }
         .bottom-row {
              border-top: none;
-            /* Alt satırın üstünde çizgi olmasın */
         }
 
         /* Renk Paleti (0'dan 9'a) */
@@ -296,7 +281,7 @@
             min-height: 30px;
             font-size: 1.4em; 
             font-weight: 700; 
-            margin: 10px 0; /* Dikey boşluk DAHA AZALTILDI (15px yerine 10px) */
+            margin: 10px 0; 
         }
         
         /* ################# KONFETI STİLİ ################# */
@@ -316,8 +301,7 @@
             100% { transform: translateY(100vh) rotateZ(720deg);
                 opacity: 0; }
         }
-/* ################# ÖZEL MOBİL UYUMLULUK (MEDIA QUERY) (SIKIŞTIRILDI) ################# */
-        /* Ekran genişliği 450 piksel ve altı için küçültme */
+        /* ################# ÖZEL MOBİL UYUMLULUK ################# */
         @media (max-width: 450px) {
             
             .container {
@@ -339,13 +323,11 @@
                 margin: 0 4px;
             }
 
-            /* Rakamlar arası boşluk ve padding daraltıldı */
             .number-palette { 
                 gap: 4px;
                 padding: 4px 0;
             }
             
-            /* Rakamların boyutunu küçült */
             .draggable-number { 
                 width: 38px;
                 height: 38px; 
@@ -842,25 +824,14 @@
 
         function renderHighScores() {
             const scores = getHighScores();
-            // HATA DÜZELTİLDİ: Template literal (ters tırnak) kullanımı düzeltildi.
+            // HATA DÜZELTİLDİ: JavaScript hatasına neden olan 'return' ifadesi tek satıra indirildi.
             const scoreHtml = scores.map((s, index) => {
-                const deleteButton = `
-                    <button 
-                        onclick="deleteSingleScoreWithPassword('${s.id}', '${s.player}')" 
-                        style="background: #e74c3c; color: white; 
-                        border: none; border-radius: 6px; padding: 4px 8px; margin-left: 12px; cursor: pointer; font-size: 0.9em; line-height: 1.2;">
-                        🗑️ Sil
-                    </button>`;
-
-                return `
-                    <div class="score-item">
-                        <span>${index + 1}. ${s.player}</span>
-                        <span>${s.score}${deleteButton}</span>
-                    </div>
-                `; // Buradaki ters tırnaklar ve yapıyı düzelttim.
+                const deleteButton = `<button onclick="deleteSingleScoreWithPassword('${s.id}', '${s.player}')" style="background: #e74c3c; color: white; border: none; border-radius: 6px; padding: 4px 8px; margin-left: 12px; cursor: pointer; font-size: 0.9em; line-height: 1.2;">🗑️ Sil</button>`;
+                // Hata giderildi: Return ifadesi hataya neden olmayacak şekilde düzenlendi.
+                return `<div class="score-item"><span>${index + 1}. ${s.player}</span><span>${s.score}${deleteButton}</span></div>`; 
             }).join('');
             
-            // YENİ SKOR YÜKLEME ALANI
+            // SKOR YÜKLEME ALANI
             const highScoresContent = document.getElementById('highScoresContent');
 
             if (highScoresContent) {
@@ -899,7 +870,7 @@
                 }
             }
             
-            // Yeni ID'lere yerleştirme
+            // ID'lere yerleştirme
             const numberPaletteTop = document.getElementById('numberPaletteTop');
             const numberPaletteBottom = document.getElementById('numberPaletteBottom');
 
