@@ -18,7 +18,7 @@
             min-height: 100vh;
             background-color: #f7f9fc;
             background-image: linear-gradient(to right, rgba(199, 215, 237, 0.3) 1px, transparent 1px),
-                                linear-gradient(to bottom, rgba(199, 215, 237, 0.3) 1px, transparent 1px);
+                              linear-gradient(to bottom, rgba(199, 215, 237, 0.3) 1px, transparent 1px);
             background-size: 20px 20px;
             padding: 20px;
             position: relative;
@@ -349,7 +349,7 @@
             <p style="font-size: 1.1em; color: #555;">Oyuna başlamak için adınızı seçin ve bireysel şifrenizi girin.</p>
 
             <button id="togglePlayerListBtn" onclick="togglePlayerList()">Adınızı Seçin</button>
-        
+     
             <div class="player-list-wrapper" id="playerListWrapper">
                 <div class="player-list" id="playerListContainer">
                     </div>
@@ -376,7 +376,7 @@
 
         <div id="gameScreen" class="screen">
             <div class="header">
-            
+          
                 <span id="playerNameDisplay" class="header-item">Oyuncu: -</span>
                 <span id="scoreDisplay" class="header-item">Puan: 0</span>
                 <span id="timerDisplay" class="header-item">Süre: 120</span>
@@ -384,14 +384,14 @@
 
             <div class="operation-container">
                 <div id="opPlusContainer"></div> 
-            
+          
                 <div id="currentOperationGrid"></div>
                 <div class="op-line-separator"></div> 
             </div>
 
             <div class="result-zone">
                 <div class="result-digit" data-place="tens" ondrop="drop(event, this)" ondragover="allowDrop(event)">?</div>
-            
+         
                 <div class="result-digit" data-place="ones" ondrop="drop(event, this)" ondragover="allowDrop(event)">?</div>
         
             </div>
@@ -402,10 +402,10 @@
             <div class="number-palette bottom-row" id="numberPaletteBottom"></div>
         </div>
 
-    
+     
         <div id="gameOverScreen" class="screen">
             <h2>Oyun Bitti!</h2>
-            
+          
             <p id="finalScoreText" style="font-size: 1.2em;
                 font-weight: 600; color: #34495e;"></p>
             <button onclick="window.location.reload()" style="
@@ -426,76 +426,62 @@
     <script>
         // ------------------ JAVASCRIPT KODLARI ------------------
         
-        // ####################################################################
-        // ################### MERKEZİ SKOR SİSTEMİ BİLGİLERİ ###################
-        // ####################################################################
-
-        // 1. SKOR OKUMA URL'Sİ: Google Sheets'ten yayınlanmış skorları çeker.
-        // XLSX yerine parse kolaylığı için CSV olarak değiştirildi.
-        const GOOGLE_SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRgzOKU5jXUB9AWEP6_WISo9D3t2hW2hG6dAXeVV8WKDetnZSN6cOvwwQ2fO9DeyfdmQZ_X0AjQ6eYa/pub?output=csv";
-        
-        // 2. SKOR GÖNDERME URL'Sİ: (Form ID'sini kullanarak oluşturuldu)
-        // DİKKAT: Verilen ID (1aevp...) bir Sheets ID'sine benziyor. Form ID'si '1FAIpQLS...' ile başlar.
-        // Eğer bu kısım çalışmazsa, LÜTFEN Google Form'unuzun gerçek ID'sini buraya yapıştırın.
-        const GOOGLE_FORM_ID = "1aevpCxzoPDT7wd2f6jtSVL2wNhan5et9R0xtZQz__X0"; // Kontrol edin!
-        const FORM_ACTION_URL = `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`;
-
-        // 3. FORM ALAN (ENTRY) ID'LERİ: Bu ID'ler Form'dan Form'a değişir.
-        // LÜTFEN Google Form'unuzun kaynak kodundan doğru entry ID'lerini bularak DEĞİŞTİRİN.
-        const FORM_ENTRY_IDS = {
-            // Oyuncu Adı alanının ID'si (Örnek placeholder ID'dir)
-            PLAYER_NAME: "entry.123456789", // !!! BU KISMI DEĞİŞTİRİN
-            // Skor alanının ID'si (Örnek placeholder ID'dir)
-            SCORE: "entry.987654321" // !!! BU KISMI DEĞİŞTİRİN
-        };
-
-        // ####################################################################
-
         // YÖNETİCİ ŞİFRESİ
         const ADMIN_PASSWORD = "ogretmen2024"; 
         const GAME_DURATION = 120; 
 
         // ################## ÖĞRENCİ ADLARI VE ŞİFRELERİ ##################
-        
+       
         const STUDENT_PASSWORDS = {
             "AHMET EFE AYVAZ": "4910",
             "ALİ ARAS AYYILDIZ": "5335",
             "ALİ ASAF GÜRBÜZ": "4771",
             "ALYA DEMİRAL": "2041",
             "ASEL LENA AYYILDIZ": "2441",
-            "ASIM MİRAÇ KARA": "2766",
+            "ASIM MİRAÇ KARA": 
+            "2766",
+       
             "AYBÜKE ÖZKAN": "4850",
             "BERAT ALİ AKDEMİR": "2532",
             "BETÜL SENA GÜNGÖR": "2274",
             "DERİN DURU ÇAL": "5010",
             "DİDEM SOYLU": "4207",
             "EMİR RÜZGAR GÖLEŞ": "5822",
+     
             "ESİLA YİĞİT": "2644",
+     
             "EYMEN ARAS PULATKAN": "1722",
             "EYMEN YAYLACIK": "2425",
             "FATMA HİRA ASLAN": "2310",
             "FEYZA EMİNE ALTUN": "5142",
             "HAMZA KAĞAN ÖZTAŞ": "2486",
+            
             "HATİCE ÇALİMLİ": "1352",
             "HELİN ADA": "2661",
+   
             "HÜSNE SERRA CEREN": "5303",
             "İMRAN YAZICI": "2832",
             "MİRAÇ ÖZÇELEBİ": "3552",
             "MUSAB CİHAT KILIÇ": "2841",
             "NİSANUR FİLİZ": "1234",
+         
             "ÖMER ASAF GÜNGÖR": "2274",
             "SAİD HAMZA ASLAN": "2272",
+ 
             "SİNAN BARAN": "4840",
             "TUANA TÜRK DERİN ÇETİN": "1961",
             "UMUT ARAS KUTLU": "2216",
             "YİĞİT ALİ BENLİ": "2559",
             "YİĞİT ASAF İŞSEVER": "4888",
+   
             "YUSUF BERAT TANRIVERDİ": "4682",
+           
             "YUSUF BOZDOĞAN": "4810",
             "YUSUF EYMEN ÇINAR": "5046",
             "ZEYNEB MERYEM TAHİROĞLU": "4422",
             "ZEYNEP AKSOY": "2414",
             "ZÜMRA BELİZ YILDIRIM": "4949"
+    
         };
         // ###############################################################
 
@@ -519,94 +505,46 @@
         const opPlusContainer = document.getElementById('opPlusContainer');
         const currentOperationGrid = document.getElementById('currentOperationGrid');
         const playerListWrapper = document.getElementById('playerListWrapper');
+        const numberPalette = document.getElementById('numberPalette');
         const resultDigitsElements = document.querySelectorAll('.result-digit');
         let currentDragElement = null;
-
-        // ------------------ MERKEZİ SKOR YÖNETİMİ (YENİ) ------------------
-        
-        // Sheets'ten gelen CSV metnini puan dizisine dönüştürür.
-        function parseCSV(csv) {
-            const lines = csv.split('\n').filter(line => line.trim() !== '');
-            if (lines.length < 2) return [];
-
-            // İlk satır başlık (Timestamp, Oyuncu Adı, Skor) olduğu için atlanır.
-            const dataLines = lines.slice(1);
-            
-            const scores = dataLines.map((line, index) => {
-                const values = line.split(',');
-                
-                // Varsayılan Sheets formatı: values[0]=Timestamp, values[1]=Oyuncu Adı, values[2]=Skor
-                const player = values[1] ? values[1].trim().replace(/"/g, '') : 'Bilinmeyen';
-                const score = values[2] ? parseInt(values[2].trim()) : 0;
-                
-                // Benzersiz ID olarak index kullanıyoruz
-                return {
-                    id: 'sheet-id-' + index, 
-                    player: player,
-                    score: score
-                };
-            }).filter(s => s.score > 0);
-            
-            return scores;
-        }
-
-        // Skorları Google Sheets'ten çeker (ASENKRON FONKSİYON)
-        async function getHighScores() {
+        // ------------------ LOCAL STORAGE YÖNETİMİ ------------------
+        function getHighScores() {
             try {
-                const response = await fetch(GOOGLE_SHEET_CSV_URL);
-                const csvText = await response.text();
-                
-                const scores = parseCSV(csvText); 
-                
-                // Puanları en yüksekten en düşüğe sırala
-                scores.sort((a, b) => b.score - a.score);
-
-                return scores;
-
-            } catch (e) {
-                console.error("Sheets'ten skor çekme hatası:", e);
-                // Hata durumunda boş bir array döndür
-                return []; 
+                const scores = JSON.parse(localStorage.getItem('toplamaScores'));
+                return Array.isArray(scores) ? scores : [];
+            } catch (e) { return [];
             }
         }
 
-
-        // Skoru Google Form aracılığıyla Sheets'e kaydeder.
         function saveScore(player, score) {
-            // Sadece sıfırın üstündeki skorları kaydet
-            if (score <= 0) return; 
-
-            // 1. Form verisini oluşturma
-            const formData = new FormData();
-            formData.append(FORM_ENTRY_IDS.PLAYER_NAME, player);
-            formData.append(FORM_ENTRY_IDS.SCORE, score);
-
-            // 2. Google Form'a POST isteği gönderme
-            fetch(FORM_ACTION_URL, {
-                method: 'POST',
-                mode: 'no-cors', // CORS hatalarını önlemek için
-                body: formData
-            })
-            .then(() => {
-                console.log('Skor Google Sheets\'e başarıyla gönderildi.');
-                // Yeni skoru çekip listeyi güncellemek için kısa bir gecikme
-                setTimeout(renderHighScores, 1500); 
-            })
-            .catch(error => {
-                console.error('Skor gönderme hatası:', error);
-                alert("Hata: Skor kaydedilemedi. İnternet bağlantınızı veya Form/Sheet ayarlarınızı kontrol edin.");
-            });
+            const scores = getHighScores();
+            const newScoreEntry = { 
+                id: generateUniqueId(),
+                player: player, 
+                score: score 
+            };
+            scores.push(newScoreEntry);
+            
+            scores.sort((a, b) => b.score - a.score); 
+            
+            localStorage.setItem('toplamaScores', JSON.stringify(scores));
+            renderHighScores();
         }
 
-        // ------------------ SKOR SİLME FONKSİYONLARI GÜNCELLENDİ ------------------
+        // ------------------ SKOR SİLME FONKSİYONLARI ------------------
         
-        // Skorlar artık merkezi bir tabloda olduğu için, web sitesinden silmek mümkün değildir.
-        // Yöneticinin Sheets'ten manuel silmesi gerekir.
         function deleteSingleScoreWithPassword(scoreId, playerName) {
             const enteredPassword = prompt(`${playerName} oyuncusunun kaydını silmek için YÖNETİCİ şifresini girin:`);
             if (enteredPassword === ADMIN_PASSWORD) {
-                alert("Skor silindi olarak işaretlendi! NOT: Kalıcı olarak silmek için Google E-Tablo'ya giderek o satırı manuel olarak silmeniz gerekmektedir.");
-                setTimeout(renderHighScores, 500);
+                let scores = getHighScores();
+                const updatedScores = scores.filter(s => 
+                    s.id !== scoreId 
+                );
+                localStorage.setItem('toplamaScores', JSON.stringify(updatedScores));
+                renderHighScores();
+                alert(`${playerName} oyuncusunun kaydı silindi.`);
+
             } else if (enteredPassword !== null) {
                 alert('Hata! Girilen şifre yanlış.');
             }
@@ -615,9 +553,9 @@
         function clearAllScoresWithPassword() {
             const enteredPassword = prompt("Tüm Skorları Silmek İçin YÖNETİCİ şifresini girin:");
             if (enteredPassword === ADMIN_PASSWORD) {
-                alert('Tebrikler! Tüm Skorlar Sıfırlandı (Görünüm Yenileniyor)! NOT: Merkezi E-Tablo\'daki tüm kayıtları manuel olarak silmeniz GEREKİR.');
-                // Yeniden yükleyerek temizlenmiş gibi göster
-                setTimeout(renderHighScores, 500);
+                localStorage.removeItem('toplamaScores');
+                renderHighScores();
+                alert('Tebrikler! Tüm Skorlar Başarıyla Sıfırlandı.');
             } else if (enteredPassword !== null) {
                 alert('Hata! Girilen şifre yanlış.');
             }
@@ -678,7 +616,7 @@
                 timeLeft--;
                 timerDisplay.textContent = `⏳ Süre: ${timeLeft}`;
                 if (timeLeft <= 0) {
-                    
+                  
                     clearInterval(timerInterval);
                     endGame();
                 }
@@ -690,7 +628,6 @@
             gameOverScreen.classList.add('active');
             clearInterval(timerInterval);
             document.getElementById('finalScoreText').textContent = `${currentPlayer}, Toplam Puanın: ${currentScore}`;
-            // YENİ: Skoru Sheets'e kaydet
             saveScore(currentPlayer, currentScore);
         }
 
@@ -853,35 +790,35 @@
         }
 
         function handleCorrectAnswer() {
-            currentScore += 10; // Yeni: Her doğru cevap 10 puan
-            updateDisplay();
-            launchConfetti(); 
-            feedbackDisplay.style.color = '#2ecc71'; 
-            feedbackDisplay.textContent = 'Aferin! 🌟 (+10 Puan) Yeni İşlem Geliyor...';
-            setTimeout(() => { generateNewOperation(); }, 1500);
-        }
+    currentScore += 10; // Yeni: Her doğru cevap 10 puan
+    updateDisplay();
+    launchConfetti(); 
+    feedbackDisplay.style.color = '#2ecc71'; 
+    feedbackDisplay.textContent = 'Aferin! 🌟 (+10 Puan) Yeni İşlem Geliyor...';
+    setTimeout(() => { generateNewOperation(); }, 1500);
+}
 
-        function handleWrongAnswer() {
-            currentScore = Math.max(0, currentScore - 5); // Yeni: Her yanlış cevap -5 puan, puan 0'ın altına düşmez
-            updateDisplay(); // Puanı hemen güncelliyoruz
-            
-            feedbackDisplay.style.color = '#e74c3c';
-            feedbackDisplay.textContent = 'Yanlış yaptın! (-5 Puan) Yeniden dene. 🤔';
-            
-            // Sonuç hanelerini sıfırlama işlemi 
-            resultDigitsElements.forEach(el => {
-                el.textContent = '?';
-                el.className = 'result-digit';
-            });
-            resultDigits = { ones: null, tens: null };
-        }
+function handleWrongAnswer() {
+    currentScore = Math.max(0, currentScore - 5); // Yeni: Her yanlış cevap -5 puan, puan 0'ın altına düşmez
+    updateDisplay(); // Puanı hemen güncelliyoruz
+    
+    feedbackDisplay.style.color = '#e74c3c';
+    feedbackDisplay.textContent = 'Yanlış yaptın! (-5 Puan) Yeniden dene. 🤔';
+    
+    // Sonuç hanelerini sıfırlama işlemi (Bu kısım aynı kalmıştır)
+    resultDigitsElements.forEach(el => {
+        el.textContent = '?';
+        el.className = 'result-digit';
+    });
+    resultDigits = { ones: null, tens: null };
+}
 
-        // ------------------ İLK YÜKLEME VE RENDER (GÜNCELLENDİ) ------------------
+        // ------------------ İLK YÜKLEME VE RENDER ------------------
         
         function renderPlayerList() {
-            // Player listesi için Sheets'ten veri çekmek mantıklı değil, 
-            // sadece tanımlı oyuncular kullanılıyor.
-            const players = INITIAL_PLAYERS; 
+            const scores = getHighScores();
+            // Hem başlangıç oyuncularını hem de skorlarda adı geçenleri tekil (unique) olarak birleştir
+            let players = [...new Set([...INITIAL_PLAYERS, ...scores.map(s => s.player)])]; 
             
             if (playerListContainer) {
                 playerListContainer.innerHTML = players.map(name => 
@@ -890,30 +827,19 @@
             }
         }
 
-        // ASENKRON olarak güncellendi.
-        async function renderHighScores() {
-            // Sheets'ten skorları çek (fetch'i bekler)
-            const scores = await getHighScores(); 
-            
+        function renderHighScores() {
+            const scores = getHighScores();
+            // Sorun yaratan ve tek satırda olması gereken template literal düzeltildi.
             const scoreHtml = scores.map((s, index) => {
-                // Silme butonu, sadece Sheets'e gitme uyarısı verecek şekilde ayarlandı
-                const deleteButton = `
-                    <button 
-                        onclick="alert('Skorlar merkezi olarak Sheets\'te saklanmaktadır. Silmek için Yönetici şifresini girin ve E-Tablo\'ya yönlendirileceksiniz.')"
-                        style="background: #e74c3c; color: white; border: none; border-radius: 6px; padding: 4px 8px; margin-left: 12px; cursor: pointer; font-size: 0.9em; line-height: 1.2;">
-                        🗑️ Sil
-                    </button>`;
-
-                return `<div class="score-item">
-                            <span>${index + 1}. ${s.player}</span>
-                            <span>${s.score}${deleteButton}</span>
-                        </div>`; 
+                const deleteButton = `<button onclick="deleteSingleScoreWithPassword('${s.id}', '${s.player}')" style="background: #e74c3c; color: white; border: none; border-radius: 6px; padding: 4px 8px; margin-left: 12px; cursor: pointer; font-size: 0.9em; line-height: 1.2;">🗑️ Sil</button>`;
+                return `<div class="score-item"><span>${index + 1}. ${s.player}</span><span>${s.score}${deleteButton}</span></div>`; 
             }).join('');
             
+            // SKOR YÜKLEME ALANI
             const highScoresContent = document.getElementById('highScoresContent');
 
             if (highScoresContent) {
-                highScoresContent.innerHTML = scoreHtml ||
+                 highScoresContent.innerHTML = scoreHtml ||
                     '<p style="margin-top: 15px; color: #777;">Henüz skor yok. İlk sen oyna!</p>';
             }
         }
@@ -962,9 +888,10 @@
 
 
         document.addEventListener('DOMContentLoaded', () => {
-            renderPlayerList();
+            renderPlayerList(); // Bu fonksiyon öğrenci listesini yüklüyor
+            renderHighScores();
             renderNumberPalette();
-            renderHighScores(); // Yeni: Skorları Sheets'ten çeker
+            splashScreen.classList.add('active'); 
         });
     </script>
 </body>
